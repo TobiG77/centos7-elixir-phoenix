@@ -5,14 +5,17 @@ MAINTAINER Tobias Gerschner <tobias.gerschner@gmail.com>
 ENV PATH=$PATH:/usr/local/elixir/bin
 ENV ERL_AFLAGS="-kernel shell_history enabled"
 
-RUN curl -sL https://rpm.nodesource.com/setup_6.x | bash -
+RUN yum -y install inotify-tools make gcc
+
+RUN curl -sL https://rpm.nodesource.com/setup_9.x | bash -
 RUN yum clean all
-RUN yum -y install nodejs yarn
+RUN yum -y install nodejs
 RUN npm install -g npm --prefix=/usr/local
 RUN ln -s -f /usr/local/bin/npm /usr/bin/npm
-RUN ln -s -f /usr/local/bin/yarn /usr/bin/yarn
 
-RUN yum -y install inotify-tools make gcc
+RUN wget https://dl.yarnpkg.com/rpm/yarn.repo -O /etc/yum.repos.d/yarn.repo
+RUN yum -y install yarn
+RUN ln -s -f /usr/local/bin/yarn /usr/bin/yarn
 
 WORKDIR /opt/app
 RUN mix archive.install https://github.com/phoenixframework/archives/raw/master/phx_new.ez --force
