@@ -15,7 +15,6 @@ RUN ln -s -f /usr/local/bin/npm /usr/bin/npm
 
 RUN wget https://dl.yarnpkg.com/rpm/yarn.repo -O /etc/yum.repos.d/yarn.repo
 RUN yum -y install yarn
-RUN ln -s -f /usr/local/bin/yarn /usr/bin/yarn
 
 WORKDIR /opt/app
 RUN mix archive.install https://github.com/phoenixframework/archives/raw/master/phx_new.ez --force
