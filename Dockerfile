@@ -9,9 +9,7 @@ RUN yum -y install inotify-tools make gcc
 
 RUN curl -sL https://rpm.nodesource.com/setup_9.x | bash -
 RUN yum clean all
-RUN yum -y install nodejs
-RUN npm install -g npm --prefix=/usr/local
-RUN ln -s -f /usr/local/bin/npm /usr/bin/npm
+RUN yum -y install nodejs && npm --version
 
 RUN wget https://dl.yarnpkg.com/rpm/yarn.repo -O /etc/yum.repos.d/yarn.repo
 RUN yum -y install yarn
