@@ -11,6 +11,7 @@ ENV PATH=$PATH:/usr/local/elixir/bin
 ENV ERL_AFLAGS="-kernel shell_history enabled"
 
 RUN yum -y install inotify-tools make gcc
+RUN yum -y groupinstall "Development Tools"
 
 RUN curl -sL https://rpm.nodesource.com/setup_9.x | bash -
 RUN yum clean all
